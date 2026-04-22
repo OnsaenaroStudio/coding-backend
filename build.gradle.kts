@@ -24,6 +24,8 @@ dependencies {
     implementation(libs.kotlin.reflect)
     implementation(libs.jackson.module.kotlin)
 
+    implementation(libs.exposed.spring.boot4.starter)
+
     developmentOnly(libs.spring.boot.devtools)
     runtimeOnly(libs.h2)
 
