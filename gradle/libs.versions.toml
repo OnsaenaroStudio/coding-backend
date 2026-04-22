@@ -4,7 +4,7 @@ spring-boot = "4.0.5"
 spring-dependency-management = "1.1.7"
 
 junit = "5.11.0"
-jackson = "2.18.0"
+jackson = "3.1.2"
 h2 = "2.2.224"
 
 [plugins]
@@ -16,9 +16,10 @@ spring-dependency-management = { id = "io.spring.dependency-management", version
 [libraries]
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-kotlinx-serialization-json = { module = "rg.springframework.boot:spring-boot-kotlinx-serialization-json" }
 
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jackson-module-kotlin = { module = "tools.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
 
