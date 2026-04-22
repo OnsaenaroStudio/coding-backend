@@ -10,6 +10,6 @@ import org.springframework.transaction.annotation.Transactional
 class SchemaInitialize : ApplicationRunner {
 
     override fun run(args: ApplicationArguments) {
-        TODO("Not yet implemented")
+
     }
 }

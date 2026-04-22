@@ -25,11 +25,17 @@ dependencies {
     implementation(libs.jackson.module.kotlin)
 
     implementation(libs.exposed.spring.boot4.starter)
+    implementation(libs.spring.boot.starter.security)
 
     developmentOnly(libs.spring.boot.devtools)
     runtimeOnly(libs.h2)
 
+    implementation(libs.jwt.api)
+    runtimeOnly(libs.jwt.impl)
+    runtimeOnly(libs.jwt.jackson)
+
     testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.spring.boot.starter.security.test)
     testImplementation(libs.kotlin.test.junit5)
     testRuntimeOnly(libs.junit.platform.launcher)
 }
