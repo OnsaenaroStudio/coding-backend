@@ -1,6 +1,6 @@
-package io.github.onsaenaro.user.dto
+package io.github.onsaenaro.endpoint.user.dto
 
-import io.github.onsaenaro.user.entity.UserRole
+import io.github.onsaenaro.endpoint.user.entity.UserRole
 import java.util.*
 
 data class UserResponseDto(

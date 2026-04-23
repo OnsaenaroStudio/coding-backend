@@ -1,6 +1,6 @@
 package io.github.onsaenaro
 
-import io.github.onsaenaro.user.entity.UserTable
+import io.github.onsaenaro.endpoint.user.entity.UserTable
 import org.jetbrains.exposed.v1.jdbc.SchemaUtils
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
