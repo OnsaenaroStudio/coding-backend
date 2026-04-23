@@ -13,7 +13,7 @@ spring:
   datasource:
     url: ${DB_URL}
     driverClassName: ${DB_CLASS}
-    username: ${DB_NAME}
+    username: ${DB_USERNAME}
     password: ${DB_PASSWD}
 
   exposed:

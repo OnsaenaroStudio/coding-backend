@@ -8,6 +8,7 @@ jackson = "3.1.2"
 
 exposed = "1.0.0"
 
+postgresql = "42.7.9"
 h2 = "2.2.224"
 hikariCP = "7.0.2"
 
@@ -34,6 +35,7 @@ kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref =
 jackson-module-kotlin = { module = "tools.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 
 spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
 

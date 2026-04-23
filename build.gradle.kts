@@ -29,6 +29,7 @@ dependencies {
 
     developmentOnly(libs.spring.boot.devtools)
     runtimeOnly(libs.h2)
+    runtimeOnly(libs.postgresql)
 
     implementation(libs.jwt.api)
     runtimeOnly(libs.jwt.impl)
