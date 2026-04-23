@@ -1,3 +1,8 @@
+supabase:
+  url: ${SUPABASE_URL}
+  anon: ${SUPABASE_ANON_KEY}
+  jwt_secret: ${SUPABASE_JWT_SIGNER}
+
 spring:
   config:
     import: optional:file:.env[.properties]
