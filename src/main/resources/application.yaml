@@ -1,12 +1,15 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
+
   application:
     name: coding
 
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password: password
+    url: ${DB_URL}
+    driverClassName: ${DB_CLASS}
+    username: ${DB_NAME}
+    password: ${DB_PASSWD}
 
   exposed:
     generate-ddl: true
