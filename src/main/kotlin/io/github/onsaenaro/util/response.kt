@@ -1,4 +1,4 @@
-package io.github.onsaenaro.utils
+package io.github.onsaenaro.util
 
 import io.github.onsaenaro.data.ResponseForm
 import org.springframework.http.ResponseEntity
