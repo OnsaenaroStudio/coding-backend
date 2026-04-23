@@ -33,7 +33,7 @@ class UserController(
         @RequestParam(required = false) username: String?
     ): ResponseEntity<ResponseForm<List<UserResponseDto>>> {
         val result = when {
-            uuid != null -> userService.findUserByUUID(uuid)?.let { listOf(it) }
+            uuid != null -> userService.findUserById(uuid)?.let { listOf(it) }
             username != null -> userService.findUserByUsername(username)?.let { listOf(it) }
             else -> userService.findAll()
         } ?: return responseGenerator(404, null, "User Not Found")

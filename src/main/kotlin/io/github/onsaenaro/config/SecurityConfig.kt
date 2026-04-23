@@ -25,7 +25,7 @@ class SecurityConfig {
 
     @Bean
     fun roleHierarchy(): RoleHierarchy =
-        RoleHierarchyImpl.withRolePrefix("ROLE_")
+        RoleHierarchyImpl.withDefaultRolePrefix()
             .role(UserRole.ADMIN.name).implies(UserRole.USER.name)
             .build()
 }
