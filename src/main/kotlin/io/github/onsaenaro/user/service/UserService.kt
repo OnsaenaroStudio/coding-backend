@@ -1,9 +1,9 @@
-package io.github.onsaenaro.domain.user.service
+package io.github.onsaenaro.user.service
 
-import io.github.onsaenaro.domain.user.dto.UserRequestDto
-import io.github.onsaenaro.domain.user.entity.UserRole
-import io.github.onsaenaro.domain.user.entity.UserTable
-import io.github.onsaenaro.domain.user.extension.toUserResponseDto
+import io.github.onsaenaro.user.dto.UserRequestDto
+import io.github.onsaenaro.user.entity.UserRole
+import io.github.onsaenaro.user.entity.UserTable
+import io.github.onsaenaro.user.extension.toUserResponseDto
 import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.jdbc.insertAndGetId
 import org.jetbrains.exposed.v1.jdbc.selectAll

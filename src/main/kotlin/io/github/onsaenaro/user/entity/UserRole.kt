@@ -1,4 +1,4 @@
-package io.github.onsaenaro.domain.user.entity
+package io.github.onsaenaro.user.entity
 
 enum class UserRole {
     ADMIN,

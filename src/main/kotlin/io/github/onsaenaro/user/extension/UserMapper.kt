@@ -1,7 +1,7 @@
-package io.github.onsaenaro.domain.user.extension
+package io.github.onsaenaro.user.extension
 
-import io.github.onsaenaro.domain.user.dto.UserResponseDto
-import io.github.onsaenaro.domain.user.entity.UserTable
+import io.github.onsaenaro.user.dto.UserResponseDto
+import io.github.onsaenaro.user.entity.UserTable
 import org.jetbrains.exposed.v1.core.ResultRow
 
 fun ResultRow.toUserResponseDto() = UserResponseDto(

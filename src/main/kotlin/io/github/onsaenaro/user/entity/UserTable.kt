@@ -1,4 +1,4 @@
-package io.github.onsaenaro.domain.user.entity
+package io.github.onsaenaro.user.entity
 
 import org.jetbrains.exposed.v1.core.dao.id.java.UUIDTable
 

@@ -1,4 +1,4 @@
-package io.github.onsaenaro.domain.user.dto
+package io.github.onsaenaro.user.dto
 
 data class UserRequestDto(
     val username: String,

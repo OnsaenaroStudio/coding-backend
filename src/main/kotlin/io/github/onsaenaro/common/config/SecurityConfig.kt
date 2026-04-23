@@ -1,6 +1,6 @@
 package io.github.onsaenaro.common.config
 
-import io.github.onsaenaro.domain.user.entity.UserRole
+import io.github.onsaenaro.user.entity.UserRole
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy

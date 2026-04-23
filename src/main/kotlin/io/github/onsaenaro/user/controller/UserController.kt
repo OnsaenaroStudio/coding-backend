@@ -1,9 +1,9 @@
-package io.github.onsaenaro.domain.user.controller
+package io.github.onsaenaro.user.controller
 
 import io.github.onsaenaro.data.ResponseForm
-import io.github.onsaenaro.domain.user.dto.UserRequestDto
-import io.github.onsaenaro.domain.user.dto.UserResponseDto
-import io.github.onsaenaro.domain.user.service.UserService
+import io.github.onsaenaro.user.dto.UserRequestDto
+import io.github.onsaenaro.user.dto.UserResponseDto
+import io.github.onsaenaro.user.service.UserService
 import io.github.onsaenaro.util.responseGenerator
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
