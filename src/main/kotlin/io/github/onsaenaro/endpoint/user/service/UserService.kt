@@ -38,6 +38,9 @@ class UserService(
     fun findUserByUsername(username: String) =
         userRepository.findByUsername(username)?.toUserResponseDto()
 
+    fun findUserByEmail(email: String) =
+        userRepository.findByEmail(email)?.toUserResponseDto()
+
     override fun loadUserByUsername(username: String): UserDetails {
         val row = userRepository.findByUsername(username)
             ?: throw UsernameNotFoundException("User not found: $username")

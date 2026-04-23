@@ -35,4 +35,9 @@ class UserRepository {
         UserTable.selectAll()
             .where { UserTable.username eq username }
             .firstOrNull()
+
+    fun findByEmail(email: String): ResultRow? =
+        UserTable.selectAll()
+            .where { UserTable.username eq email }
+            .firstOrNull()
 }
