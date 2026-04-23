@@ -4,7 +4,7 @@ import io.github.onsaenaro.data.ResponseForm
 import io.github.onsaenaro.domain.user.dto.UserRequestDto
 import io.github.onsaenaro.domain.user.dto.UserResponseDto
 import io.github.onsaenaro.domain.user.service.UserService
-import io.github.onsaenaro.utils.responseGenerator
+import io.github.onsaenaro.util.responseGenerator
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
@@ -17,13 +17,14 @@ class UserController(
 
     @PostMapping("/signup")
     fun signUp(@RequestBody dto: UserRequestDto): ResponseEntity<ResponseForm<UUID>> {
-        val uuid = runCatching {
-            userService.createUser(dto)
-        }.getOrElse {
-            return responseGenerator(500, null, "USER_CREATE_FAILED")
+        return try {
+            val uuid = userService.createUser(dto)
+            responseGenerator(201, uuid, "USER_CREATED")
+        } catch (e: IllegalArgumentException) {
+            responseGenerator(400, null, e.message)
+        } catch (_: Exception) {
+            responseGenerator(500, null, "USER_CREATE_FAILED")
         }
-
-        return responseGenerator(201, uuid, "USER_CREATED")
     }
 
     @GetMapping

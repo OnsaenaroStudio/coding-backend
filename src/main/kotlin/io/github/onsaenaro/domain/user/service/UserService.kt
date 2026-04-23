@@ -13,11 +13,12 @@ import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 class UserService(
     private val passwordEncoder: PasswordEncoder
 ) {
 
+    @Transactional
     fun createUser(dto: UserRequestDto): UUID {
         if (findUserByUsername(dto.username) != null)
             throw IllegalArgumentException("Username already exists")
@@ -31,17 +32,14 @@ class UserService(
         }.value
     }
 
-    @Transactional(readOnly = true)
     fun findAll() = UserTable.selectAll().map {
         it.toUserResponseDto()
     }
 
-    @Transactional(readOnly = true)
     fun findUserByUUID(uuid: UUID) = UserTable.selectAll().where{
         UserTable.id eq uuid
     }.firstOrNull()?.toUserResponseDto()
 
-    @Transactional(readOnly = true)
     fun findUserByUsername(username: String) = UserTable.selectAll().where{
         UserTable.username eq username
     }.firstOrNull()?.toUserResponseDto()
