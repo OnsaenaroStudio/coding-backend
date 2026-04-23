@@ -1,7 +1,6 @@
 package io.github.onsaenaro.config
 
 import io.github.onsaenaro.endpoint.user.entity.UserRole
-import io.github.onsaenaro.filter.LoginFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy
@@ -9,11 +8,9 @@ import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
 class SecurityConfig(
@@ -25,23 +22,23 @@ class SecurityConfig(
         http
             .csrf { it.disable() }
 
-//            .formLogin { it.disable() }
-//
-//            .httpBasic { it.disable() }
+            .formLogin { it.disable() }
+
+            .httpBasic { it.disable() }
 
             .authorizeHttpRequests { it
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
             }
 
-            .addFilterAt(
-                LoginFilter(authenticationManager(authenticationConfiguration)),
-                UsernamePasswordAuthenticationFilter::class.java
-            )
+//            .addFilterAt(
+//                LoginFilter(authenticationManager(authenticationConfiguration)),
+//                UsernamePasswordAuthenticationFilter::class.java
+//            )
 
-            .sessionManagement {
-                it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            }
+//            .sessionManagement {
+//                it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//            }
 
         return http.build()
     }

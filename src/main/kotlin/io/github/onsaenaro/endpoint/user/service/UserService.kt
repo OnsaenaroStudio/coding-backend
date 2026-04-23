@@ -41,9 +41,15 @@ class UserService(
     fun findUserByEmail(email: String) =
         userRepository.findByEmail(email)?.toUserResponseDto()
 
-    override fun loadUserByUsername(username: String): UserDetails {
-        val row = userRepository.findByUsername(username)
-            ?: throw UsernameNotFoundException("User not found: $username")
+    override fun loadUserByUsername(identifier: String): UserDetails {
+        val row = if (identifier.contains("@")) {
+            userRepository.findByEmail(identifier)
+        } else {
+            userRepository.findByUsername(identifier)
+        } ?: throw UsernameNotFoundException("User not found: $identifier")
+
+//        val row = userRepository.findByUsername(username)
+//            ?: throw UsernameNotFoundException("User not found: $username")
 
         return User.builder()
             .username(row[UserTable.username])

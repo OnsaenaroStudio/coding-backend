@@ -8,11 +8,14 @@ import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.jdbc.insertAndGetId
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
 @Repository
+@Transactional(readOnly = true)
 class UserRepository {
 
+    @Transactional
     fun insert(dto: UserRequestDto, encodedPassword: String): UUID {
         return UserTable.insertAndGetId {
             it[username] = dto.username
@@ -38,6 +41,6 @@ class UserRepository {
 
     fun findByEmail(email: String): ResultRow? =
         UserTable.selectAll()
-            .where { UserTable.username eq email }
+            .where { UserTable.email eq email }
             .firstOrNull()
 }
