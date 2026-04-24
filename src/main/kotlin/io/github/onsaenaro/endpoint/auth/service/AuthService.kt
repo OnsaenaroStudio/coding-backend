@@ -3,6 +3,7 @@ package io.github.onsaenaro.endpoint.auth.service
 import io.github.onsaenaro.endpoint.user.dto.UserLoginDto
 import io.github.onsaenaro.endpoint.user.entity.UserTable
 import io.github.onsaenaro.endpoint.user.repository.UserRepository
+import io.github.onsaenaro.util.isValidEmail
 import io.github.onsaenaro.util.responseGenerator
 import org.jetbrains.exposed.v1.core.ResultRow
 import org.springframework.http.ResponseEntity
@@ -28,9 +29,7 @@ class AuthService(
     }
 
     fun findByIdentifier(identifier: String): ResultRow? {
-        val regex = Regex("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\$/")
-
-        return if (regex.matches(identifier))
+        return if (isValidEmail(identifier))
             userRepository.findByEmail(identifier)
         else
             userRepository.findByUsername(identifier)

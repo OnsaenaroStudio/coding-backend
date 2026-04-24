@@ -4,10 +4,10 @@ import io.github.onsaenaro.data.ResponseForm
 import io.github.onsaenaro.endpoint.user.dto.UserRequestDto
 import io.github.onsaenaro.endpoint.user.dto.UserResponseDto
 import io.github.onsaenaro.endpoint.user.service.UserService
+import io.github.onsaenaro.util.isValidEmail
 import io.github.onsaenaro.util.responseGenerator
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.net.http.HttpResponse
 import java.util.*
 
 @RestController
@@ -18,10 +18,8 @@ class UserController(
 
     @PostMapping("/signup")
     fun signUp(@RequestBody dto: UserRequestDto): ResponseEntity<ResponseForm<UUID>> {
-        val emailRegex = Regex("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\$/")
-
         when {
-            !emailRegex.matches(dto.email) -> return responseGenerator(
+            !isValidEmail(dto.email) -> return responseGenerator(
                 400, null, "INVALID_EMAIL"
             )
             dto.password.length<8-> return responseGenerator(
