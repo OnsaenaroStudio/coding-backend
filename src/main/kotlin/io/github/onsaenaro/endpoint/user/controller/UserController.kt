@@ -7,6 +7,7 @@ import io.github.onsaenaro.endpoint.user.service.UserService
 import io.github.onsaenaro.util.responseGenerator
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.net.http.HttpResponse
 import java.util.*
 
 @RestController
@@ -17,6 +18,17 @@ class UserController(
 
     @PostMapping("/signup")
     fun signUp(@RequestBody dto: UserRequestDto): ResponseEntity<ResponseForm<UUID>> {
+        val emailRegex = Regex("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\$/")
+
+        when {
+            !emailRegex.matches(dto.email) -> return responseGenerator(
+                400, null, "INVALID_EMAIL"
+            )
+            dto.password.length<8-> return responseGenerator(
+                400, null, "PASSWD_TOO_SHORT"
+            )
+        }
+
         return try {
             val uuid = userService.createUser(dto)
             responseGenerator(201, uuid, "USER_CREATED")

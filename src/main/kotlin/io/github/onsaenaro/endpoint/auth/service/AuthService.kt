@@ -28,7 +28,9 @@ class AuthService(
     }
 
     fun findByIdentifier(identifier: String): ResultRow? {
-        return if (identifier.contains("@"))
+        val regex = Regex("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\$/")
+
+        return if (regex.matches(identifier))
             userRepository.findByEmail(identifier)
         else
             userRepository.findByUsername(identifier)
